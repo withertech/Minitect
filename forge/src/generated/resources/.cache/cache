@@ -1,0 +1,7 @@
+d0a0b0fbd2f90540a6a08b942b771a1663884270 assets/minitect/blockstates/crusher.json
+499a6ca04f179466bcf0df7af5405b238c7b2017 assets/minitect/blockstates/furnace.json
+cd278349c09c5e24ccd144b5d9b73f09e019af7c assets/minitect/lang/en_us.json
+b0dd7398985ead68ff7baf73024e821a855094ff assets/minitect/models/item/crusher.json
+f2f4833a3ff0865a655b71da6ca83ac1fb184e4f assets/minitect/models/item/furnace.json
+c8dc5e75de52ed2196a5533a22dfd3dcb9bd443b data/minitect/recipes/crushing/apple.json
+7d2dae37552ef42ab986c9ac7e6c34488454a03e data/minitect/recipes/crushing/book.json

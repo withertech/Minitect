@@ -1,0 +1,17 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredient": {
+    "tag": "forge:bookshelves"
+  },
+  "results": [
+    {
+      "item": "minecraft:book",
+      "count": 2
+    },
+    {
+      "item": "minecraft:book",
+      "chance": 0.5
+    }
+  ]
+}

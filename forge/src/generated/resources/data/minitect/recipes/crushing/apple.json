@@ -1,0 +1,12 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredient": {
+    "tag": "forge:ingots/iron"
+  },
+  "results": [
+    {
+      "item": "minecraft:apple"
+    }
+  ]
+}

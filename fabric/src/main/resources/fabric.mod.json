@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "minitect",
+  "version": "${version}",
+  "name": "Minitect",
+  "description": "Cross platform Tech Mod",
+  "authors": [
+    "Witherking25"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/minitect",
+    "sources": "https://github.com/withertech/Minitect",
+    "issues": "https://github.com/withertech/Minitect/issues"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.withertech.minitect.fabric.MinitectFabric"
+    ],
+    "fabric-datagen": [
+      "com.withertech.minitect.data.MinitectDataFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "fabric": ">=0.46.1+1.18",
+    "minecraft": ">=1.18.1",
+    "architectury": ">=${architectury_version}",
+    "cloth-config": ">=${cloth_version}",
+    "mine_flux": ">=${flux_version}",
+    "mine_tags": ">=${tags_version}",
+    "mine_gui": ">=${gui_version}"
+  }
+}

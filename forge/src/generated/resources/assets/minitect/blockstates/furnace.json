@@ -1,0 +1,1221 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/furnace_frame"
+      }
+    },
+    {
+      "when": {
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/furnace_frame",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/furnace_frame",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/furnace_frame",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "down": "item_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "item_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "item_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_input"
+      }
+    },
+    {
+      "when": {
+        "back": "item_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_input"
+      }
+    },
+    {
+      "when": {
+        "right": "item_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_input"
+      }
+    },
+    {
+      "when": {
+        "back": "item_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "item_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "item_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "item_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "item_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "item_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "item_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "item_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "item_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "item_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "item_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "item_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "item_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_output"
+      }
+    },
+    {
+      "when": {
+        "back": "item_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_output"
+      }
+    },
+    {
+      "when": {
+        "right": "item_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_output"
+      }
+    },
+    {
+      "when": {
+        "back": "item_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "item_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "item_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "item_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "item_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "item_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "item_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "item_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "item_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/item_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input"
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input"
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input"
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "fluid_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "fluid_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output"
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output"
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output"
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "fluid_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "fluid_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "fluid_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/fluid_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "energy_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "energy_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input"
+      }
+    },
+    {
+      "when": {
+        "back": "energy_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input"
+      }
+    },
+    {
+      "when": {
+        "right": "energy_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input"
+      }
+    },
+    {
+      "when": {
+        "back": "energy_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "energy_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "energy_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "energy_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "energy_input",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "energy_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "energy_input",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "energy_input",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "energy_input",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "energy_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "up": "energy_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "energy_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "left": "energy_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output"
+      }
+    },
+    {
+      "when": {
+        "back": "energy_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output"
+      }
+    },
+    {
+      "when": {
+        "right": "energy_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output"
+      }
+    },
+    {
+      "when": {
+        "back": "energy_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right": "energy_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "energy_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "left": "energy_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "back": "energy_output",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "energy_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "right": "energy_output",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "left": "energy_output",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "back": "energy_output",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "minitect:block/energy_output",
+        "y": 90
+      }
+    }
+  ]
+}
