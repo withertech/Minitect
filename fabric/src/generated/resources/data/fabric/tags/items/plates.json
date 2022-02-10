@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "#fabric:plates/iron",
+    "#fabric:plates/gold",
+    "#fabric:plates/copper",
+    "#fabric:plates/tin",
+    "#fabric:plates/silver",
+    "#fabric:plates/lead",
+    "#fabric:plates/nickel",
+    "#fabric:plates/platinum",
+    "#fabric:plates/zinc",
+    "#fabric:plates/bismuth",
+    "#fabric:plates/aluminum",
+    "#fabric:plates/uranium",
+    "#fabric:plates/bronze",
+    "#fabric:plates/brass",
+    "#fabric:plates/invar",
+    "#fabric:plates/electrum",
+    "#fabric:plates/steel",
+    "#fabric:plates/bismuth_brass",
+    "#fabric:plates/aluminum_steel",
+    "#fabric:plates/bismuth_steel",
+    "#fabric:plates/redstone_alloy",
+    "#fabric:plates/signalum",
+    "#fabric:plates/lumium",
+    "#fabric:plates/enderium"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:nuggets/bismuth"
+    }
+  },
+  "result": {
+    "item": "minitect:bismuth_ingot"
+  }
+}

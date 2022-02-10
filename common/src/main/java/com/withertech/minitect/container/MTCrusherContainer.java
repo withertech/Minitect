@@ -18,14 +18,18 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 
-public class MTCrusherContainer extends SyncedGuiDescription
+public class MTCrusherContainer extends SyncedGuiDescription implements ProgressContainer
 {
+
+	private final CrusherPanel crusherPanel;
+	private boolean clickArea = false;
 
 	public MTCrusherContainer(int syncId, Inventory playerInventory, FriendlyByteBuf buf)
 	{
 		this(syncId, playerInventory, ContainerLevelAccess.NULL, buf.readComponent());
 
 	}
+
 	public MTCrusherContainer(int syncId, Inventory playerInventory, ContainerLevelAccess context, Component title)
 	{
 		super(MineContainers.CRUSHER.get(), syncId, playerInventory, getBlockInventory(context, MTCrusherTile.INV_SIZE), getBlockPropertyDelegate(context, MTCrusherTile.DATA_SIZE));
@@ -35,7 +39,8 @@ public class MTCrusherContainer extends SyncedGuiDescription
 		setTitleVisible(false);
 		setRootPanel(root);
 		main.setInsets(Insets.ROOT_PANEL);
-		main.add(new CrusherPanel(blockInventory, title), 0, 0);
+		crusherPanel = new CrusherPanel(this, blockInventory, title);
+		main.add(crusherPanel, 0, 0);
 		sub.setInsets(Insets.ROOT_PANEL);
 		sub.add(new SettingsPanel(context, MineBlocks.CRUSHER.get(), context.evaluate((level, blockPos) -> level.getBlockEntity(blockPos, MineTiles.CRUSHER.get()).map(AbstractMachineTile::getUpgrades).orElse(new AbstractMachineTile.UpgradeInventory())).orElse(new AbstractMachineTile.UpgradeInventory()), this), 0, 0);
 
@@ -47,17 +52,31 @@ public class MTCrusherContainer extends SyncedGuiDescription
 		getRootPanel().validate(this);
 	}
 
-	private static class CrusherPanel extends WGridPanel
+	@Override
+	public ProgressPanel getProgressPanel()
+	{
+		return crusherPanel;
+	}
+
+	@Override
+	public boolean showClickArea()
+	{
+		return clickArea;
+	}
+
+	private static class CrusherPanel extends WGridPanel implements ProgressPanel
 	{
 
+		private final MTCrusherContainer container;
 		private final WLabel title;
 		private final WItemSlot inputSlot;
 		private final WItemSlot outputSlot;
 		private final WEnergyBar energyBar;
 		private final WProgressBar progressBar;
 
-		public CrusherPanel(Container inv, Component comp)
+		public CrusherPanel(MTCrusherContainer container, Container inv, Component comp)
 		{
+			this.container = container;
 			title = new WLabel(comp);
 			inputSlot = WItemSlot.of(inv, 0);
 			outputSlot = WItemSlot.of(inv, 1, 1, 3);
@@ -68,6 +87,12 @@ public class MTCrusherContainer extends SyncedGuiDescription
 			this.add(outputSlot, 8, 0);
 			this.add(energyBar, 0, 0);
 			this.add(progressBar, 6, 1);
+		}
+
+		@Override
+		public WProgressBar getProgressBar()
+		{
+			return progressBar;
 		}
 
 		@Override
@@ -83,6 +108,20 @@ public class MTCrusherContainer extends SyncedGuiDescription
 			inputSlot.setBackgroundPainter(painter);
 			outputSlot.setBackgroundPainter(painter);
 			return this;
+		}
+
+		@Override
+		public void onShown()
+		{
+			super.onShown();
+			container.clickArea = true;
+		}
+
+		@Override
+		public void onHidden()
+		{
+			super.onHidden();
+			container.clickArea = false;
 		}
 
 		@Override

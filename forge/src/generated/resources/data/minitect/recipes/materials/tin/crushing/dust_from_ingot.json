@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/tin"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:tin_dust"
+    }
+  ]
+}

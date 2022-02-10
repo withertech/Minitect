@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:ores/aluminum"
+  },
+  "result": "minitect:aluminum_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:storage_blocks/lumium"
+    }
+  ],
+  "result": {
+    "item": "minitect:lumium_ingot",
+    "count": 9
+  }
+}

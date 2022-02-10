@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gear/iron",
+    "#forge:gear/gold",
+    "#forge:gear/copper",
+    "#forge:gear/tin",
+    "#forge:gear/silver",
+    "#forge:gear/lead",
+    "#forge:gear/nickel",
+    "#forge:gear/platinum",
+    "#forge:gear/zinc",
+    "#forge:gear/bismuth",
+    "#forge:gear/aluminum",
+    "#forge:gear/uranium",
+    "#forge:gear/bronze",
+    "#forge:gear/brass",
+    "#forge:gear/invar",
+    "#forge:gear/electrum",
+    "#forge:gear/steel",
+    "#forge:gear/bismuth_brass",
+    "#forge:gear/aluminum_steel",
+    "#forge:gear/bismuth_steel",
+    "#forge:gear/redstone_alloy",
+    "#forge:gear/signalum",
+    "#forge:gear/lumium",
+    "#forge:gear/enderium"
+  ]
+}

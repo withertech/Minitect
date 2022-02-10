@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/tin"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:tin_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:tin_dust",
+      "chance": 0.5
+    }
+  ]
+}

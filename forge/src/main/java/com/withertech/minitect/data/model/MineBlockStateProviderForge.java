@@ -5,11 +5,18 @@ import com.withertech.minitect.block.AbstractMachineBlock;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
 import com.withertech.minitect.registry.MineBlocks;
+import com.withertech.minitect.registry.MineGems;
+import com.withertech.minitect.registry.MineMetals;
+import com.withertech.minitect.registry.MineUpgrades;
+import com.withertech.minitect.util.BlockLike;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -17,6 +24,8 @@ import java.util.Arrays;
 
 public class MineBlockStateProviderForge extends BlockStateProvider
 {
+	private final ModelFile itemGenerated = itemModels().getExistingFile(mcLoc("item/generated"));
+	private final ModelFile itemHandheld = itemModels().getExistingFile(mcLoc("item/handheld"));
 	public MineBlockStateProviderForge(DataGenerator gen, ExistingFileHelper exFileHelper)
 	{
 		super(gen, Minitect.MOD_ID, exFileHelper);
@@ -33,12 +42,50 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 	{
 		registerMachine(MineBlocks.FURNACE.get(), modLoc("block/furnace_frame"));
 		registerMachine(MineBlocks.CRUSHER.get(), modLoc("block/crusher_frame"));
+		for (MineMetals metal : MineMetals.values())
+		{
+			metal.getStorageBlock(true).ifPresent(this::simpleBlock);
+			metal.getOre(true).ifPresent(this::simpleBlock);
+			metal.getDeepOre(true).ifPresent(this::simpleBlock);
+		}
+		for (MineGems gem : MineGems.values())
+		{
+			gem.getStorageBlock(true).ifPresent(this::simpleBlock);
+			gem.getOre(true).ifPresent(this::simpleBlock);
+			gem.getDeepOre(true).ifPresent(this::simpleBlock);
+		}
 	}
 
 	private void registerItems()
 	{
+
+
 		registerBlockItem(MineBlocks.FURNACE.get(), modLoc("block/furnace_frame"));
 		registerBlockItem(MineBlocks.CRUSHER.get(), modLoc("block/crusher_frame"));
+		for (MineMetals metal : MineMetals.values())
+		{
+			metal.getStorageBlock(true).ifPresent(this::registerBlockItem);
+			metal.getOre(true).ifPresent(this::registerBlockItem);
+			metal.getDeepOre(true).ifPresent(this::registerBlockItem);
+			metal.getIngot(true).ifPresent(this::registerGeneratedItem);
+			metal.getNugget(true).ifPresent(this::registerGeneratedItem);
+			metal.getDust(true).ifPresent(this::registerGeneratedItem);
+			metal.getGear(true).ifPresent(this::registerGeneratedItem);
+			metal.getPlate(true).ifPresent(this::registerGeneratedItem);
+			metal.getRod(true).ifPresent(this::registerGeneratedItem);
+		}
+		for (MineGems gem : MineGems.values())
+		{
+			gem.getStorageBlock(true).ifPresent(this::registerBlockItem);
+			gem.getOre(true).ifPresent(this::registerBlockItem);
+			gem.getDeepOre(true).ifPresent(this::registerBlockItem);
+			gem.getGem(true).ifPresent(this::registerGeneratedItem);
+			gem.getDust(true).ifPresent(this::registerGeneratedItem);
+		}
+		for (MineUpgrades upgrade : MineUpgrades.values())
+		{
+			registerGeneratedItem(upgrade);
+		}
 	}
 
 	private void registerBlockItem(Block block, ResourceLocation model)
@@ -108,6 +155,40 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 		registerFrame(builder, frame);
 		Arrays.stream(Port.values()).forEach(port -> registerPort(builder, port));
 	}
+	private void registerBlockItem(BlockLike block)
+	{
+		registerBlockItem(block.asBlock());
+	}
+
+	private void registerBlockItem(Block block)
+	{
+		String name = block.getRegistryName().getPath();
+		itemModels().withExistingParent(name, modLoc("block/" + name));
+	}
+
+	private void registerGeneratedItem(ItemLike item)
+	{
+		registerItem(item, itemGenerated);
+	}
+
+	private void registerHandheldItem(ItemLike item)
+	{
+		registerItem(item, itemHandheld);
+	}
+
+	private void registerItem(ItemLike item, ModelFile parent)
+	{
+		String name = item.asItem().getRegistryName().getPath();
+		registerItem(item, parent, "item/" + name);
+	}
+
+	private void registerItem(ItemLike item, ModelFile parent, String texture)
+	{
+		itemModels().getBuilder(item.asItem().getRegistryName().getPath())
+				.parent(parent)
+				.texture("layer0", modLoc(texture));
+	}
+
 
 	private enum Port
 	{
@@ -126,4 +207,5 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 			this.connection = connection;
 		}
 	}
+
 }

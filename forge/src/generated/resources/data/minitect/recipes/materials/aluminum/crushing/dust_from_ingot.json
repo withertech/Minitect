@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/aluminum"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:aluminum_dust"
+    }
+  ]
+}

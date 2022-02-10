@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "item": "minecraft:glowstone"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:glowstone_gem",
+      "count": 2
+    },
+    {
+      "item": "minitect:glowstone_gem",
+      "chance": 0.5
+    }
+  ]
+}

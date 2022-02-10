@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/bronze"
+    }
+  ],
+  "result": {
+    "item": "minitect:bronze_nugget",
+    "count": 9
+  }
+}

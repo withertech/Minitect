@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/nickel"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    }
+  ],
+  "result": {
+    "item": "minitect:invar_dust",
+    "count": 3
+  }
+}

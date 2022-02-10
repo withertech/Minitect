@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:gems/diamond"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:diamond_dust"
+    }
+  ]
+}

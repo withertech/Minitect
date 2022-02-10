@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/redstone_alloy"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:redstone_alloy_dust"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/bismuth_brass"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:bismuth_brass_dust"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:dusts/signalum"
+  },
+  "result": "minitect:signalum_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -2,14 +2,14 @@ package com.withertech.minitect.registry;
 
 import com.withertech.minitect.Minitect;
 import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.Registries;
 import net.minecraft.core.Registry;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class MineRegistries
 {
@@ -30,6 +30,12 @@ public class MineRegistries
 		MineScreens.register();
 	}
 
+	public static void registerCommon()
+	{
+		MineConfigs.register();
+		MineOres.register();
+	}
+
 	private static void registerRegistries()
 	{
 		BLOCKS.register();
@@ -41,11 +47,15 @@ public class MineRegistries
 
 	private static void registerEntries()
 	{
+		MineTags.register();
+		MineTabs.register();
 		MineUpgrades.register();
 		MineBlocks.register();
 		MineItems.register();
 		MineTiles.register();
 		MineContainers.register();
 		MineRecipes.register();
+		MineMetals.register();
+		MineGems.register();
 	}
 }

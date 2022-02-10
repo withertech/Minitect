@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/coal"
+    },
+    {
+      "tag": "fabric:dusts/coal"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    }
+  ],
+  "result": {
+    "item": "minitect:steel_dust",
+    "count": 2
+  }
+}

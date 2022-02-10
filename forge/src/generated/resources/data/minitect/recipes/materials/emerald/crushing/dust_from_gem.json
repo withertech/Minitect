@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:gems/emerald"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:emerald_dust"
+    }
+  ]
+}

@@ -18,14 +18,18 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 
-public class MTFurnaceContainer extends SyncedGuiDescription
+public class MTFurnaceContainer extends SyncedGuiDescription implements ProgressContainer
 {
+
+	private final FurnacePanel furnacePanel;
+	private boolean clickArea = false;
 
 	public MTFurnaceContainer(int syncId, Inventory playerInventory, FriendlyByteBuf buf)
 	{
 		this(syncId, playerInventory, ContainerLevelAccess.NULL, buf.readComponent());
 
 	}
+
 	public MTFurnaceContainer(int syncId, Inventory playerInventory, ContainerLevelAccess context, Component title)
 	{
 		super(MineContainers.FURNACE.get(), syncId, playerInventory, getBlockInventory(context, MTFurnaceTile.INV_SIZE), getBlockPropertyDelegate(context, MTFurnaceTile.DATA_SIZE));
@@ -35,7 +39,8 @@ public class MTFurnaceContainer extends SyncedGuiDescription
 		setTitleVisible(false);
 		setRootPanel(root);
 		main.setInsets(Insets.ROOT_PANEL);
-		main.add(new FurnacePanel(blockInventory, title), 0, 0);
+		furnacePanel = new FurnacePanel(this, blockInventory, title);
+		main.add(furnacePanel, 0, 0);
 		sub.setInsets(Insets.ROOT_PANEL);
 		sub.add(new SettingsPanel(context, MineBlocks.FURNACE.get(), context.evaluate((level, blockPos) -> level.getBlockEntity(blockPos, MineTiles.FURNACE.get()).map(AbstractMachineTile::getUpgrades).orElse(new AbstractMachineTile.UpgradeInventory())).orElse(new AbstractMachineTile.UpgradeInventory()), this), 0, 0);
 
@@ -47,17 +52,31 @@ public class MTFurnaceContainer extends SyncedGuiDescription
 		getRootPanel().validate(this);
 	}
 
-	private static class FurnacePanel extends WGridPanel
+	@Override
+	public ProgressPanel getProgressPanel()
+	{
+		return furnacePanel;
+	}
+
+	@Override
+	public boolean showClickArea()
+	{
+		return clickArea;
+	}
+
+	private static class FurnacePanel extends WGridPanel implements ProgressPanel
 	{
 
+		private final MTFurnaceContainer container;
 		private final WLabel title;
 		private final WItemSlot inputSlot;
 		private final WItemSlot outputSlot;
 		private final WEnergyBar energyBar;
 		private final WProgressBar progressBar;
 
-		public FurnacePanel(Container inv, Component comp)
+		public FurnacePanel(MTFurnaceContainer container, Container inv, Component comp)
 		{
+			this.container = container;
 			title = new WLabel(comp);
 			inputSlot = WItemSlot.of(inv, 0);
 			outputSlot = WItemSlot.outputOf(inv, 1);
@@ -90,6 +109,26 @@ public class MTFurnaceContainer extends SyncedGuiDescription
 		{
 			super.validate(c);
 			title.setColor(c.getTitleColor());
+		}
+
+		@Override
+		public void onShown()
+		{
+			super.onShown();
+			container.clickArea = true;
+		}
+
+		@Override
+		public void onHidden()
+		{
+			super.onHidden();
+			container.clickArea = false;
+		}
+
+		@Override
+		public WProgressBar getProgressBar()
+		{
+			return progressBar;
 		}
 	}
 }

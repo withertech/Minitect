@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "fabric:dusts/silver"
+  },
+  "result": "minitect:silver_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

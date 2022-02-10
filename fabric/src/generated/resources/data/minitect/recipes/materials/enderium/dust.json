@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/ender_pearl"
+    },
+    {
+      "tag": "fabric:dusts/ender_pearl"
+    },
+    {
+      "tag": "fabric:dusts/ender_pearl"
+    },
+    {
+      "tag": "fabric:dusts/ender_pearl"
+    },
+    {
+      "tag": "fabric:dusts/platinum"
+    },
+    {
+      "tag": "fabric:dusts/lead"
+    },
+    {
+      "tag": "fabric:dusts/lead"
+    },
+    {
+      "tag": "fabric:dusts/lead"
+    }
+  ],
+  "result": {
+    "item": "minitect:enderium_dust",
+    "count": 4
+  }
+}

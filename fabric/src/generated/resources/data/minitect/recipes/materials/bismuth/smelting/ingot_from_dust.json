@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:dusts/bismuth"
+  },
+  "result": "minitect:bismuth_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

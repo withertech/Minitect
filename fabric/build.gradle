@@ -18,12 +18,12 @@ sourceSets {
 }
 loom {
     runs {
-        datagen {
+        data {
             client()
             name "Minecraft Data"
             vmArg "-Dfabric-api.datagen"
             vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
-            vmArg "-Dfabric-api.datagen.strict-validation"
+//            vmArg "-Dfabric-api.datagen.strict-validation"
             source sourceSets.main
         }
     }
@@ -48,7 +48,7 @@ dependencies {
 
     modRuntimeOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") { transitive false }
 
-    modRuntimeOnly("me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}") { transitive false }
+    modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}") { transitive false }
     modImplementation("com.withertech:mine_flux-fabric:${rootProject.flux_version}") {
         exclude(module: "fabric-api")
     }
@@ -165,3 +165,7 @@ curseforge {
 }
 
 rootProject.tasks.getByName("curseforgePublish").dependsOn tasks.getByName("curseforge")
+
+task decompile {
+    dependsOn rootProject.tasks.getByName("decompile")
+}

@@ -1,14 +1,14 @@
 package com.withertech.minitect.tile;
 
+import com.mojang.datafixers.util.Pair;
 import com.withertech.mine_flux.api.IMFContainer;
 import com.withertech.mine_flux.api.IMFStorage;
 import com.withertech.mine_gui.PropertyDelegateHolder;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
 import com.withertech.minitect.block.MTFurnaceBlock;
+import com.withertech.minitect.inventory.AbstractMachineInventory;
 import com.withertech.minitect.recipe.AbstractRecipe;
-import com.withertech.minitect.recipe.CookingRecipeWrapper;
-import com.withertech.minitect.recipe.CrushingRecipe;
 import com.withertech.minitect.registry.MineRecipes;
 import com.withertech.minitect.registry.MineUpgrades;
 import net.minecraft.Util;
@@ -18,14 +18,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -144,13 +143,9 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 						ingredient.put(value, inv.getItem(value));
 				});
 			});
-			Map<Integer, ItemStack> invResult = Util.make(new HashMap<>(), result ->
+			Map<Ingredient, Integer> recipeCounts = Util.make(new HashMap<>(), ingredient ->
 			{
-				Arrays.stream(inv.OUTPUT_SLOTS).forEach(value ->
-				{
-					if (inv.getItem(value) != ItemStack.EMPTY)
-						result.put(value, inv.getItem(value));
-				});
+				ingredient.putAll(recipe.getIngredientsWithCount().stream().collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)));
 			});
 			Map<Integer, ItemStack> recipeResult = Util.make(new HashMap<>(), result ->
 			{
@@ -167,7 +162,10 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 				});
 				invIngredient.forEach((index, stack) ->
 				{
-					inv.removeItem(index, 1);
+					recipeCounts.entrySet().stream().filter(entry -> entry.getKey().test(stack) && stack.getCount() >= entry.getValue()).findFirst().ifPresent(entry ->
+					{
+						inv.removeItem(index, entry.getValue());
+					});
 				});
 			}
 
@@ -208,7 +206,7 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 				if (energy.getEnergyStored() > getMaxProgress() * (100 / getEnergyConsumptionDivisor()) && canBurn(recipe, container, i))
 				{
 					increaseProgress();
-					energy.extractEnergy(100 / getEnergyConsumptionDivisor(), false);
+					energy.extractEnergy((100 * getMaxProgressDivisor()) / getEnergyConsumptionDivisor(), false);
 					if (getProgress() == getMaxProgress())
 					{
 						setProgress(0);
@@ -255,7 +253,7 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 
 	protected void updateMaxProgress(AbstractMachineInventory container)
 	{
-		setMaxProgress(getMaxProgressForRecipe(level, container) / getMaxProgressDivisor());
+		setMaxProgress(getMaxProgressForRecipe(Objects.requireNonNull(getLevel()), container) / getMaxProgressDivisor());
 	}
 
 	public static class UpgradeInventory extends SimpleContainer

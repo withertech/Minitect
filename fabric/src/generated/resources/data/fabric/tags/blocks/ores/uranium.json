@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minitect:uranium_ore",
+    "minitect:uranium_deep_ore"
+  ]
+}

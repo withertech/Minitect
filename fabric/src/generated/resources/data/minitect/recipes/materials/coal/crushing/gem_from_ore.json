@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/coal"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:coal",
+      "count": 2
+    },
+    {
+      "item": "minecraft:coal",
+      "chance": 0.5
+    }
+  ]
+}

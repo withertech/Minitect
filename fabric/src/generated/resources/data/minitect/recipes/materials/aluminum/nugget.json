@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/aluminum"
+    }
+  ],
+  "result": {
+    "item": "minitect:aluminum_nugget",
+    "count": 9
+  }
+}

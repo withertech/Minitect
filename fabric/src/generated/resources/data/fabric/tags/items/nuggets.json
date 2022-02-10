@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "#fabric:nuggets/copper",
+    "#fabric:nuggets/tin",
+    "#fabric:nuggets/silver",
+    "#fabric:nuggets/lead",
+    "#fabric:nuggets/nickel",
+    "#fabric:nuggets/platinum",
+    "#fabric:nuggets/zinc",
+    "#fabric:nuggets/bismuth",
+    "#fabric:nuggets/aluminum",
+    "#fabric:nuggets/uranium",
+    "#fabric:nuggets/bronze",
+    "#fabric:nuggets/brass",
+    "#fabric:nuggets/invar",
+    "#fabric:nuggets/electrum",
+    "#fabric:nuggets/steel",
+    "#fabric:nuggets/bismuth_brass",
+    "#fabric:nuggets/aluminum_steel",
+    "#fabric:nuggets/bismuth_steel",
+    "#fabric:nuggets/redstone_alloy",
+    "#fabric:nuggets/signalum",
+    "#fabric:nuggets/lumium",
+    "#fabric:nuggets/enderium"
+  ]
+}

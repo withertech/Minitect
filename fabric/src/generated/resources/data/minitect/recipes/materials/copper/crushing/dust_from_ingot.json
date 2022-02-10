@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/copper"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:copper_dust"
+    }
+  ]
+}

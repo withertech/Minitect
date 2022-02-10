@@ -1,7 +1,7 @@
 package com.withertech.minitect.item.forge;
 
-import com.withertech.minitect.Minitect;
 import com.withertech.minitect.item.MachineBlockItem;
+import com.withertech.minitect.registry.MineTabs;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,7 @@ public class MachineBlockItemForge extends MachineBlockItem
 {
 	public MachineBlockItemForge(Block block)
 	{
-		super(block, new Properties().tab(Minitect.TAB));
+		super(block, new Properties().tab(MineTabs.MACHINES));
 	}
 
 	@Nullable

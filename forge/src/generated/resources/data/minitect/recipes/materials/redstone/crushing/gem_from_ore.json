@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ores/redstone"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:redstone_gem",
+      "count": 2
+    },
+    {
+      "item": "minitect:redstone_gem",
+      "chance": 0.5
+    }
+  ]
+}

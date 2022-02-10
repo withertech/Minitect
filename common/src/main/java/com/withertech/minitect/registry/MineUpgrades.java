@@ -28,7 +28,7 @@ public enum MineUpgrades implements ItemLike
 	{
 		Arrays.stream(values()).forEach(mineUpgrades ->
 		{
-			mineUpgrades.item = MineRegistries.ITEMS.register(mineUpgrades.id, () -> new UpgradeItem(new Item.Properties().stacksTo(mineUpgrades.stackSize), mineUpgrades));
+			mineUpgrades.item = MineRegistries.ITEMS.register(mineUpgrades.id, () -> new UpgradeItem(new Item.Properties().tab(MineTabs.MACHINES).stacksTo(mineUpgrades.stackSize), mineUpgrades));
 		});
 	}
 

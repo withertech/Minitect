@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/lapis"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:lapis_lazuli",
+      "count": 2
+    },
+    {
+      "item": "minecraft:lapis_lazuli",
+      "chance": 0.5
+    }
+  ]
+}

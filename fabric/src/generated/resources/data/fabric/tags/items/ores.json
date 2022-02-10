@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#fabric:ores/tin",
+    "#fabric:ores/silver",
+    "#fabric:ores/lead",
+    "#fabric:ores/nickel",
+    "#fabric:ores/platinum",
+    "#fabric:ores/zinc",
+    "#fabric:ores/bismuth",
+    "#fabric:ores/aluminum",
+    "#fabric:ores/uranium",
+    "#fabric:ores/ruby"
+  ]
+}

@@ -5,6 +5,9 @@ import com.withertech.minitect.block.AbstractMachineBlock;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
 import com.withertech.minitect.registry.MineBlocks;
+import com.withertech.minitect.registry.MineGems;
+import com.withertech.minitect.registry.MineMetals;
+import com.withertech.minitect.registry.MineUpgrades;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockStateDefinitionProvider;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -13,10 +16,13 @@ import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.ModelProvider;
 import net.minecraft.data.models.blockstates.*;
+import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 
 import java.util.Arrays;
 
@@ -28,16 +34,51 @@ public class MineBlockStateProviderFabric extends FabricBlockStateDefinitionProv
 	}
 
 	@Override
-	public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator)
+	public void generateBlockStateModels(BlockModelGenerators generator)
 	{
-		registerMachine(blockStateModelGenerator, MineBlocks.FURNACE.get(), Minitect.modLoc("block/furnace_frame"));
-		registerMachine(blockStateModelGenerator, MineBlocks.CRUSHER.get(), Minitect.modLoc("block/crusher_frame"));
+		registerMachine(generator, MineBlocks.FURNACE.get(), Minitect.modLoc("block/furnace_frame"));
+		registerMachine(generator, MineBlocks.CRUSHER.get(), Minitect.modLoc("block/crusher_frame"));
+		for (MineMetals metal : MineMetals.values())
+		{
+			metal.getStorageBlock(true).ifPresent(generator::createTrivialCube);
+			metal.getStorageBlock(true).ifPresent(block -> registerBlockItem(generator, block));
+			metal.getOre(true).ifPresent(generator::createTrivialCube);
+			metal.getOre(true).ifPresent(block -> registerBlockItem(generator, block));
+			metal.getDeepOre(true).ifPresent(generator::createTrivialCube);
+			metal.getDeepOre(true).ifPresent(block -> registerBlockItem(generator, block));
+		}
+		for (MineGems gem : MineGems.values())
+		{
+			gem.getStorageBlock(true).ifPresent(generator::createTrivialCube);
+			gem.getStorageBlock(true).ifPresent(block -> registerBlockItem(generator, block));
+			gem.getOre(true).ifPresent(generator::createTrivialCube);
+			gem.getOre(true).ifPresent(block -> registerBlockItem(generator, block));
+			gem.getDeepOre(true).ifPresent(generator::createTrivialCube);
+			gem.getDeepOre(true).ifPresent(block -> registerBlockItem(generator, block));
+		}
 	}
 
 	@Override
-	public void generateItemModels(ItemModelGenerators itemModelGenerator)
+	public void generateItemModels(ItemModelGenerators generator)
 	{
-
+		for (MineMetals metal : MineMetals.values())
+		{
+			metal.getIngot(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			metal.getNugget(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			metal.getDust(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			metal.getGear(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			metal.getPlate(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			metal.getRod(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+		}
+		for (MineGems gem : MineGems.values())
+		{
+			gem.getGem(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+			gem.getDust(true).ifPresent(item -> generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM));
+		}
+		for (MineUpgrades upgrade : MineUpgrades.values())
+		{
+			generator.generateFlatItem(upgrade.asItem(), ModelTemplates.FLAT_ITEM);
+		}
 	}
 
 	private void registerFrame(MultiPartGenerator builder, ResourceLocation frame)
@@ -102,6 +143,12 @@ public class MineBlockStateProviderFabric extends FabricBlockStateDefinitionProv
 		registerFrame(builder, frame);
 		Arrays.stream(Port.values()).forEach(port -> registerPort(builder, port));
 		generator.blockStateOutput.accept(builder);
+	}
+
+	private void registerBlockItem(BlockModelGenerators generator, Block block)
+	{
+		generator.skipAutoItemBlock(block);
+		generator.delegateItemModel(block, ModelLocationUtils.getModelLocation(block));
 	}
 
 	private enum Port

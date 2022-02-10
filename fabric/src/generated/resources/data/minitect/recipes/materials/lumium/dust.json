@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/silver"
+    },
+    {
+      "tag": "fabric:dusts/glowstone"
+    },
+    {
+      "tag": "fabric:dusts/glowstone"
+    },
+    {
+      "tag": "fabric:dusts/glowstone"
+    },
+    {
+      "tag": "fabric:dusts/glowstone"
+    },
+    {
+      "tag": "fabric:dusts/tin"
+    },
+    {
+      "tag": "fabric:dusts/tin"
+    },
+    {
+      "tag": "fabric:dusts/tin"
+    }
+  ],
+  "result": {
+    "item": "minitect:lumium_dust",
+    "count": 4
+  }
+}

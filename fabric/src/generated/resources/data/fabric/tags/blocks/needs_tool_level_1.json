@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minitect:tin_ore",
+    "minitect:tin_deep_ore",
+    "minitect:zinc_ore",
+    "minitect:zinc_deep_ore",
+    "minitect:bismuth_ore",
+    "minitect:bismuth_deep_ore",
+    "minitect:bauxite_ore",
+    "minitect:bauxite_deep_ore"
+  ]
+}

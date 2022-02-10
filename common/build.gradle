@@ -8,6 +8,10 @@ dependencies {
     modImplementation "com.withertech:mine_tags:${rootProject.tags_version}"
     modImplementation "com.withertech:mine_gui:${rootProject.gui_version}"
 
+    modRuntimeOnly "curse.maven:we-225608:3631606"
+
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rootProject.rei_version}"
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin:${rootProject.rei_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 }
@@ -38,4 +42,8 @@ publishing {
             }
         }
     }
+}
+
+task decompile {
+    dependsOn rootProject.tasks.getByName("decompile")
 }

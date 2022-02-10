@@ -1,6 +1,6 @@
 package com.withertech.minitect.recipe;
 
-import com.withertech.minitect.tile.AbstractMachineInventory;
+import com.withertech.minitect.inventory.AbstractMachineInventory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

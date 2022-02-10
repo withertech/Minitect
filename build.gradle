@@ -121,3 +121,7 @@ subprojects { p -> licenseFormatAll.dependsOn("${p.path}:licenseFormat") }
 task curseforgePublish {
     dependsOn licenseFormatAll
 }
+
+task decompile
+
+subprojects { p -> decompile.dependsOn("${p.path}:genSources") }

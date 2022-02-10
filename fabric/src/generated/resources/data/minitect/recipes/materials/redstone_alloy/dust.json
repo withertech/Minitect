@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/redstone"
+    },
+    {
+      "tag": "fabric:dusts/redstone"
+    },
+    {
+      "tag": "fabric:dusts/redstone"
+    },
+    {
+      "tag": "fabric:dusts/redstone"
+    }
+  ],
+  "result": {
+    "item": "minitect:redstone_alloy_dust",
+    "count": 2
+  }
+}

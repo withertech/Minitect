@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ores/bismuth"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:bismuth_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:bismuth_dust",
+      "chance": 0.5
+    }
+  ]
+}

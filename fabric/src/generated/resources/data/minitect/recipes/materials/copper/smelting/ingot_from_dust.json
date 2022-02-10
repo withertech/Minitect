@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:dusts/copper"
+  },
+  "result": "minecraft:copper_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

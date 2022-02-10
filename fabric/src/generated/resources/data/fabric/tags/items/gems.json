@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#fabric:gems/redstone",
+    "#fabric:gems/glowstone",
+    "#fabric:gems/ruby"
+  ]
+}

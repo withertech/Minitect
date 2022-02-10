@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "fabric:dusts/electrum"
+  },
+  "result": "minitect:electrum_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ores/ruby"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:ruby_gem",
+      "count": 2
+    },
+    {
+      "item": "minitect:ruby_gem",
+      "chance": 0.5
+    }
+  ]
+}

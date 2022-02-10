@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:storage_blocks/bismuth_brass"
+    }
+  ],
+  "result": {
+    "item": "minitect:bismuth_brass_ingot",
+    "count": 9
+  }
+}

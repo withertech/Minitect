@@ -21,6 +21,9 @@
     ],
     "fabric-datagen": [
       "com.withertech.minitect.data.MinitectDataFabric"
+    ],
+    "rei": [
+      "com.withertech.minitect.compat.fabric.REIPluginFabric"
     ]
   },
   "depends": {

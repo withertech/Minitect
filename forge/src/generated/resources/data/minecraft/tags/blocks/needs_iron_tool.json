@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minitect:silver_ore",
+    "minitect:silver_deep_ore",
+    "minitect:lead_ore",
+    "minitect:lead_deep_ore",
+    "minitect:nickel_ore",
+    "minitect:nickel_deep_ore",
+    "minitect:platinum_ore",
+    "minitect:platinum_deep_ore",
+    "minitect:uranium_ore",
+    "minitect:uranium_deep_ore",
+    "minitect:ruby_ore",
+    "minitect:ruby_deep_ore"
+  ]
+}

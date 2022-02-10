@@ -4,6 +4,7 @@ import com.withertech.mine_flux.api.IMFStorage;
 import com.withertech.mine_flux.util.EnergyUtil;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.container.MTCrusherContainer;
+import com.withertech.minitect.inventory.AbstractMachineInventory;
 import com.withertech.minitect.recipe.CrushingRecipe;
 import com.withertech.minitect.registry.MineRecipes;
 import com.withertech.minitect.registry.MineTiles;

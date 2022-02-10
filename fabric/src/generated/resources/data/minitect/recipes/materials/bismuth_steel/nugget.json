@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/bismuth_steel"
+    }
+  ],
+  "result": {
+    "item": "minitect:bismuth_steel_nugget",
+    "count": 9
+  }
+}

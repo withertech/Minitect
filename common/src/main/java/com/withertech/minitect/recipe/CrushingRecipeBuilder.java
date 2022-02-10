@@ -24,53 +24,55 @@ public final class CrushingRecipeBuilder
 {
 	private final Map<ItemStack, Float> results = new LinkedHashMap<>();
 	private final Ingredient ingredient;
+	private final int count;
 	private final int processTime;
 
-	private CrushingRecipeBuilder(Ingredient ingredient, int processTime)
+	private CrushingRecipeBuilder(Ingredient ingredient, int count, int processTime)
 	{
 		this.ingredient = ingredient;
+		this.count = count;
 		this.processTime = processTime;
 	}
 
-	public static CrushingRecipeBuilder builder(ItemLike ingredient)
+	public static CrushingRecipeBuilder builder(ItemLike ingredient, int count)
 	{
-		return builder(ingredient, 400);
+		return builder(ingredient, count, 400);
 	}
 
-	public static CrushingRecipeBuilder builder(ItemLike ingredient, int processTime)
+	public static CrushingRecipeBuilder builder(ItemLike ingredient, int count, int processTime)
 	{
-		return builder(Ingredient.of(ingredient), processTime);
+		return builder(Ingredient.of(ingredient), count, processTime);
 	}
 
-	public static CrushingRecipeBuilder builder(Tag<Item> ingredient)
+	public static CrushingRecipeBuilder builder(Tag<Item> ingredient, int count)
 	{
-		return builder(ingredient, 400);
+		return builder(ingredient, count, 400);
 	}
 
-	public static CrushingRecipeBuilder builder(Tag<Item> ingredient, int processTime)
+	public static CrushingRecipeBuilder builder(Tag<Item> ingredient, int count, int processTime)
 	{
-		return builder(Ingredient.of(ingredient), processTime);
+		return builder(Ingredient.of(ingredient), count, processTime);
 	}
 
-	public static CrushingRecipeBuilder builder(Ingredient ingredient)
+	public static CrushingRecipeBuilder builder(Ingredient ingredient, int count)
 	{
-		return builder(ingredient, 400);
+		return builder(ingredient, count, 400);
 	}
 
-	public static CrushingRecipeBuilder builder(Ingredient ingredient, int processTime)
+	public static CrushingRecipeBuilder builder(Ingredient ingredient, int count, int processTime)
 	{
-		return new CrushingRecipeBuilder(ingredient, processTime);
+		return new CrushingRecipeBuilder(ingredient, count, processTime);
 	}
 
 	public static CrushingRecipeBuilder crushingIngot(Tag<Item> ingot, ItemLike dust, int processTime)
 	{
-		return builder(ingot, processTime)
+		return builder(ingot, 1, processTime)
 				.result(dust, 1);
 	}
 
 	public static CrushingRecipeBuilder crushingOre(Tag<Item> ore, ItemLike dust, int processTime, @Nullable ItemLike extra, float extraChance)
 	{
-		CrushingRecipeBuilder builder = builder(ore, processTime);
+		CrushingRecipeBuilder builder = builder(ore, 1, processTime);
 		builder.result(dust, 2);
 		if (extra != null)
 		{
@@ -81,7 +83,7 @@ public final class CrushingRecipeBuilder
 
 	public static CrushingRecipeBuilder crushingOre(ItemLike ore, ItemLike dust, int processTime, @Nullable ItemLike extra, float extraChance)
 	{
-		CrushingRecipeBuilder builder = builder(ore, processTime);
+		CrushingRecipeBuilder builder = builder(ore, 1, processTime);
 		builder.result(dust, 2);
 		if (extra != null)
 		{
@@ -101,21 +103,21 @@ public final class CrushingRecipeBuilder
 		return result(item, count, 1f);
 	}
 
-	public void build(Consumer<FinishedRecipe> consumer)
+	public void save(Consumer<FinishedRecipe> consumer)
 	{
 		ResourceLocation resultId = Registries.getId(results.keySet().iterator().next().getItem(), Registry.ITEM_REGISTRY);
 		ResourceLocation id = new ResourceLocation(
 				"minecraft".equals(resultId.getNamespace()) ? Minitect.MOD_ID : resultId.getNamespace(),
 				"crushing/" + resultId.getPath());
-		build(consumer, id);
+		save(consumer, id);
 	}
 
-	public void build(Consumer<FinishedRecipe> consumer, ResourceLocation id)
+	public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id)
 	{
 		consumer.accept(new Result(id, this));
 	}
 
-	public class Result implements FinishedRecipe
+	public static class Result implements FinishedRecipe
 	{
 		private final ResourceLocation id;
 		private final CrushingRecipeBuilder builder;
@@ -141,11 +143,24 @@ public final class CrushingRecipeBuilder
 			return json;
 		}
 
+		private JsonObject serializeIngredient(Ingredient ingredient, int count)
+		{
+			JsonObject json = ingredient.toJson().getAsJsonObject();
+			if (count > 1)
+			{
+				json.addProperty("count", count);
+			}
+			return json;
+		}
+
 		@Override
 		public void serializeRecipeData(JsonObject json)
 		{
 			json.addProperty("process_time", builder.processTime);
-			json.add("ingredient", builder.ingredient.toJson());
+			JsonArray ingredients = new JsonArray();
+
+			ingredients.add(serializeIngredient(builder.ingredient, builder.count));
+			json.add("ingredients", ingredients);
 
 			JsonArray results = new JsonArray();
 			builder.results.forEach((stack, chance) ->

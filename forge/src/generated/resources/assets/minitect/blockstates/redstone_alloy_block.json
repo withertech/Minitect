@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minitect:block/redstone_alloy_block"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/zinc"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:zinc_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:zinc_dust",
+      "chance": 0.5
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:storage_blocks/signalum"
+    }
+  ],
+  "result": {
+    "item": "minitect:signalum_ingot",
+    "count": 9
+  }
+}

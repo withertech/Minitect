@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/bismuth"
+    },
+    {
+      "tag": "fabric:dusts/coal"
+    },
+    {
+      "tag": "fabric:dusts/coal"
+    },
+    {
+      "tag": "fabric:dusts/coal"
+    }
+  ],
+  "result": {
+    "item": "minitect:bismuth_steel_dust",
+    "count": 4
+  }
+}

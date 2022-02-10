@@ -2,8 +2,11 @@ package com.withertech.minitect.data;
 
 import com.withertech.minitect.Minitect;
 import com.withertech.minitect.data.lang.MineLanguageProviderForge;
+import com.withertech.minitect.data.loot.MineLootProviderForge;
 import com.withertech.minitect.data.model.MineBlockStateProviderForge;
 import com.withertech.minitect.data.recipe.MineRecipeProviderForge;
+import com.withertech.minitect.data.tag.MineBlockTagProviderForge;
+import com.withertech.minitect.data.tag.MineItemTagProviderForge;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,5 +22,9 @@ public class DataGenerators
 		generator.addProvider(new MineBlockStateProviderForge(generator, event.getExistingFileHelper()));
 		generator.addProvider(new MineLanguageProviderForge(generator));
 		generator.addProvider(new MineRecipeProviderForge(generator));
+		MineBlockTagProviderForge blockTags = new MineBlockTagProviderForge(generator, event.getExistingFileHelper());
+		generator.addProvider(blockTags);
+		generator.addProvider(new MineItemTagProviderForge(generator, blockTags, event.getExistingFileHelper()));
+		generator.addProvider(new MineLootProviderForge(generator));
 	}
 }

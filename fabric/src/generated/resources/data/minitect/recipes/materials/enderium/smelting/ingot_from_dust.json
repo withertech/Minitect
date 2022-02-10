@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:dusts/enderium"
+  },
+  "result": "minitect:enderium_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

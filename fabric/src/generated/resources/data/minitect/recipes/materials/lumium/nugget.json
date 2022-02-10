@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/lumium"
+    }
+  ],
+  "result": {
+    "item": "minitect:lumium_nugget",
+    "count": 9
+  }
+}

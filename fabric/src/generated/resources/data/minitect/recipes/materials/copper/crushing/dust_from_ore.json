@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/copper"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:copper_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:copper_dust",
+      "chance": 0.5
+    }
+  ]
+}

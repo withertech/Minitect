@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ores/iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:iron_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:iron_dust",
+      "chance": 0.5
+    }
+  ]
+}

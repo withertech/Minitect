@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "fabric:ores/lead"
+  },
+  "result": "minitect:lead_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

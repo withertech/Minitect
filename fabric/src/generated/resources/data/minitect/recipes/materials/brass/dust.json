@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/copper"
+    },
+    {
+      "tag": "fabric:dusts/copper"
+    },
+    {
+      "tag": "fabric:dusts/copper"
+    },
+    {
+      "tag": "fabric:dusts/zinc"
+    }
+  ],
+  "result": {
+    "item": "minitect:brass_dust",
+    "count": 4
+  }
+}

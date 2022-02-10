@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minitect:block/electrum_block"
+    }
+  }
+}

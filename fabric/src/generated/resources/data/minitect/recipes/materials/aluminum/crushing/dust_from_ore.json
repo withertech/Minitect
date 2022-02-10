@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ores/aluminum"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:aluminum_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:aluminum_dust",
+      "chance": 0.5
+    }
+  ]
+}

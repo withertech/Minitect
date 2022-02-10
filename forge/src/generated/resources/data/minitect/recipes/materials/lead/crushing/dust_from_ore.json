@@ -1,0 +1,19 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ores/lead"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:lead_dust",
+      "count": 2
+    },
+    {
+      "item": "minitect:lead_dust",
+      "chance": 0.5
+    }
+  ]
+}

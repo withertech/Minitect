@@ -38,7 +38,7 @@ dependencies {
     modImplementation "com.withertech:mine_tags-forge:${rootProject.tags_version}"
     modImplementation "com.withertech:mine_gui-forge:${rootProject.gui_version}"
 
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
+    modImplementation "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -148,3 +148,7 @@ curseforge {
     }
 }
 rootProject.tasks.getByName("curseforgePublish").dependsOn tasks.getByName("curseforge")
+
+task decompile {
+    dependsOn rootProject.tasks.getByName("decompile")
+}

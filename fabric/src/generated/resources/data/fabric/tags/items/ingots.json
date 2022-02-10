@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "#fabric:ingots/refined_iron",
+    "#fabric:ingots/tin",
+    "#fabric:ingots/silver",
+    "#fabric:ingots/lead",
+    "#fabric:ingots/nickel",
+    "#fabric:ingots/platinum",
+    "#fabric:ingots/zinc",
+    "#fabric:ingots/bismuth",
+    "#fabric:ingots/aluminum",
+    "#fabric:ingots/uranium",
+    "#fabric:ingots/bronze",
+    "#fabric:ingots/brass",
+    "#fabric:ingots/invar",
+    "#fabric:ingots/electrum",
+    "#fabric:ingots/steel",
+    "#fabric:ingots/bismuth_brass",
+    "#fabric:ingots/aluminum_steel",
+    "#fabric:ingots/bismuth_steel",
+    "#fabric:ingots/redstone_alloy",
+    "#fabric:ingots/signalum",
+    "#fabric:ingots/lumium",
+    "#fabric:ingots/enderium"
+  ]
+}
