@@ -1,0 +1,22 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/zinc"
+    },
+    {
+      "tag": "forge:ingots/bismuth"
+    },
+    {
+      "tag": "forge:ingots/copper",
+      "count": 2
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:bismuth_brass_ingot",
+      "count": 4
+    }
+  ]
+}

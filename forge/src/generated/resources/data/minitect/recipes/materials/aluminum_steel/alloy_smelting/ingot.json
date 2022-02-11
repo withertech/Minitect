@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/aluminum"
+    },
+    {
+      "tag": "forge:ingots/iron",
+      "count": 2
+    },
+    {
+      "tag": "forge:gems/coal",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:aluminum_steel_ingot",
+      "count": 4
+    }
+  ]
+}

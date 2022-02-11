@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/bismuth"
+    },
+    {
+      "tag": "fabric:ingots/iron",
+      "count": 2
+    },
+    {
+      "tag": "fabric:gems/coal",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:bismuth_steel_ingot",
+      "count": 4
+    }
+  ]
+}

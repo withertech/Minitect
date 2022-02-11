@@ -1,0 +1,23 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "$#%",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:ingots/electrum"
+    },
+    "$": {
+      "item": "minitect:hammer"
+    },
+    "%": {
+      "item": "minitect:file"
+    }
+  },
+  "result": {
+    "item": "minitect:electrum_gear",
+    "count": 2
+  }
+}

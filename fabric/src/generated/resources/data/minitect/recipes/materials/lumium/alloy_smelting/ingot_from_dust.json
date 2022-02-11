@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/tin",
+      "count": 3
+    },
+    {
+      "tag": "fabric:dusts/glowstone",
+      "count": 4
+    },
+    {
+      "tag": "fabric:dusts/silver"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:lumium_ingot",
+      "count": 4
+    }
+  ]
+}

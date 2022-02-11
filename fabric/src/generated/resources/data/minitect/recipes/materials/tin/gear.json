@@ -1,0 +1,23 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "$#%",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:ingots/tin"
+    },
+    "$": {
+      "item": "minitect:hammer"
+    },
+    "%": {
+      "item": "minitect:file"
+    }
+  },
+  "result": {
+    "item": "minitect:tin_gear",
+    "count": 2
+  }
+}

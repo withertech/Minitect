@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/redstone",
+      "count": 4
+    },
+    {
+      "tag": "fabric:dusts/silver"
+    },
+    {
+      "tag": "fabric:dusts/copper",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:signalum_ingot",
+      "count": 4
+    }
+  ]
+}

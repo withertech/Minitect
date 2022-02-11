@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
+      "tag": "fabric:dusts/copper"
+    },
+    {
+      "tag": "fabric:dusts/copper"
+    },
+    {
+      "tag": "fabric:dusts/copper"
+    },
+    {
       "tag": "fabric:dusts/tin"
-    },
-    {
-      "tag": "fabric:dusts/copper"
-    },
-    {
-      "tag": "fabric:dusts/copper"
-    },
-    {
-      "tag": "fabric:dusts/copper"
     }
   ],
   "result": {

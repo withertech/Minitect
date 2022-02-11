@@ -1,0 +1,18 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "T",
+    "#"
+  ],
+  "key": {
+    "T": {
+      "item": "minitect:file"
+    },
+    "#": {
+      "tag": "fabric:ingots/enderium"
+    }
+  },
+  "result": {
+    "item": "minitect:enderium_rod"
+  }
+}

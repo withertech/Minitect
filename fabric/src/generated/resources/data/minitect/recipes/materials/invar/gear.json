@@ -1,0 +1,23 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "$#%",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:ingots/invar"
+    },
+    "$": {
+      "item": "minitect:hammer"
+    },
+    "%": {
+      "item": "minitect:file"
+    }
+  },
+  "result": {
+    "item": "minitect:invar_gear",
+    "count": 2
+  }
+}

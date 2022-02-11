@@ -1,3 +1,21 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.tile;
 
 import com.mojang.datafixers.util.Pair;
@@ -16,7 +34,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.world.*;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.WorldlyContainerHolder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -41,11 +62,6 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 		super(blockEntityType, blockPos, blockState);
 	}
 
-	protected Connection getConnectionFromDirection(Direction side)
-	{
-		return getBlockState().getValue(MTFurnaceBlock.FACING_TO_PROPERTY_MAP.get(Face.getFaceFromDirection(side, getBlockState())));
-	}
-
 	public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState state, T t)
 	{
 		if (t instanceof AbstractMachineTile<?, ?> tile)
@@ -55,6 +71,11 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 				tile.tick(level, blockPos, state, container);
 			}
 		}
+	}
+
+	protected Connection getConnectionFromDirection(Direction side)
+	{
+		return getBlockState().getValue(MTFurnaceBlock.FACING_TO_PROPERTY_MAP.get(Face.getFaceFromDirection(side, getBlockState())));
 	}
 
 	protected abstract void tick(Level level, BlockPos blockPos, BlockState state, AbstractMachineInventory container);
@@ -107,8 +128,7 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 			if (recipeResult.isEmpty())
 			{
 				return false;
-			}
-			else
+			} else
 			{
 				Map<Integer, ItemStack> invResult = Util.make(new HashMap<>(), result ->
 				{
@@ -121,11 +141,9 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 				if (invResult.isEmpty())
 				{
 					return true;
-				}
-				else return recipeResult.values().stream().allMatch(inv::canAddToOutput);
+				} else return recipeResult.values().stream().allMatch(inv::canAddToOutput);
 			}
-		}
-		else
+		} else
 		{
 			return false;
 		}
@@ -170,8 +188,7 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 			}
 
 			return true;
-		}
-		else
+		} else
 		{
 			return false;
 		}
@@ -213,14 +230,12 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 						burn(recipe, container, i);
 						setChanged(level, blockPos, state);
 					}
-				}
-				else
+				} else
 				{
 					setProgress(0);
 				}
 			});
-		}
-		else
+		} else
 		{
 			setProgress(0);
 		}
@@ -241,14 +256,17 @@ public abstract class AbstractMachineTile<T extends AbstractRecipe, R extends Re
 		return level.getRecipeManager().getRecipeFor(getRecipeType(), container, level).map(AbstractRecipe::getProcessTime).orElse(200);
 	}
 
-	protected abstract void setMaxProgress(int newTime);
-	protected abstract void setProgress(int newTime);
 	protected abstract int getMaxProgress();
+
+	protected abstract void setMaxProgress(int newTime);
+
 	protected abstract int getProgress();
+
+	protected abstract void setProgress(int newTime);
 
 	protected void increaseProgress()
 	{
-		setProgress(getProgress()+1);
+		setProgress(getProgress() + 1);
 	}
 
 	protected void updateMaxProgress(AbstractMachineInventory container)

@@ -1,0 +1,18 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/silver"
+    },
+    {
+      "tag": "fabric:dusts/gold"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:electrum_ingot",
+      "count": 2
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:dusts/iron",
+      "count": 2
+    },
+    {
+      "tag": "forge:dusts/coal",
+      "count": 2
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:steel_ingot",
+      "count": 2
+    }
+  ]
+}

@@ -1,12 +1,30 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.registry;
 
 import com.withertech.mine_tags.tags.PlatformTags;
+import com.withertech.mine_tags.util.TagUtil;
 import com.withertech.minitect.block.MetalBlock;
 import com.withertech.minitect.item.ResourceBlockItem;
 import com.withertech.minitect.item.ResourceItem;
 import com.withertech.minitect.item.ResourceItemType;
 import com.withertech.minitect.util.RegistryUtil;
-import com.withertech.minitect.util.TagUtil;
 import dev.architectury.hooks.tags.TagHooks;
 import dev.architectury.registry.block.BlockProperties;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -340,7 +358,6 @@ public enum MineGems
 		final String name;
 		boolean vanilla = false;
 		Supplier<Block> ore;
-		Supplier<Block> deepOre;
 		Supplier<Block> storageBlock;
 		Supplier<Item> dust;
 		Supplier<Item> gem;
@@ -377,7 +394,6 @@ public enum MineGems
 					.requiresCorrectToolForDrops()
 					.strength(ore.getHardness(), 3)
 					.sound(SoundType.STONE));
-			this.deepOre = () -> new OreBlock(BlockProperties.copy(ore.getBlock()));
 			this.oreTag = blockTag("ores/" + name);
 			return this;
 		}

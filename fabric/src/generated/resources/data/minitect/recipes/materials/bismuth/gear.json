@@ -1,0 +1,23 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "$#%",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:ingots/bismuth"
+    },
+    "$": {
+      "item": "minitect:hammer"
+    },
+    "%": {
+      "item": "minitect:file"
+    }
+  },
+  "result": {
+    "item": "minitect:bismuth_gear",
+    "count": 2
+  }
+}

@@ -1,17 +1,31 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.model;
 
 import com.withertech.minitect.Minitect;
 import com.withertech.minitect.block.AbstractMachineBlock;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
-import com.withertech.minitect.registry.MineBlocks;
-import com.withertech.minitect.registry.MineGems;
-import com.withertech.minitect.registry.MineMetals;
-import com.withertech.minitect.registry.MineUpgrades;
+import com.withertech.minitect.registry.*;
 import com.withertech.minitect.util.BlockLike;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -21,11 +35,13 @@ import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class MineBlockStateProviderForge extends BlockStateProvider
 {
 	private final ModelFile itemGenerated = itemModels().getExistingFile(mcLoc("item/generated"));
 	private final ModelFile itemHandheld = itemModels().getExistingFile(mcLoc("item/handheld"));
+
 	public MineBlockStateProviderForge(DataGenerator gen, ExistingFileHelper exFileHelper)
 	{
 		super(gen, Minitect.MOD_ID, exFileHelper);
@@ -42,6 +58,7 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 	{
 		registerMachine(MineBlocks.FURNACE.get(), modLoc("block/furnace_frame"));
 		registerMachine(MineBlocks.CRUSHER.get(), modLoc("block/crusher_frame"));
+		registerMachine(MineBlocks.ALLOY_SMELTER.get(), modLoc("block/alloy_smelter_frame"));
 		for (MineMetals metal : MineMetals.values())
 		{
 			metal.getStorageBlock(true).ifPresent(this::simpleBlock);
@@ -58,10 +75,6 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 
 	private void registerItems()
 	{
-
-
-		registerBlockItem(MineBlocks.FURNACE.get(), modLoc("block/furnace_frame"));
-		registerBlockItem(MineBlocks.CRUSHER.get(), modLoc("block/crusher_frame"));
 		for (MineMetals metal : MineMetals.values())
 		{
 			metal.getStorageBlock(true).ifPresent(this::registerBlockItem);
@@ -85,6 +98,10 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 		for (MineUpgrades upgrade : MineUpgrades.values())
 		{
 			registerGeneratedItem(upgrade);
+		}
+		for (MineCraftingTools tool : MineCraftingTools.values())
+		{
+			registerHandheldItem(tool);
 		}
 	}
 
@@ -152,9 +169,11 @@ public class MineBlockStateProviderForge extends BlockStateProvider
 	private void registerMachine(AbstractMachineBlock block, ResourceLocation frame)
 	{
 		final MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+		registerBlockItem(block, frame);
 		registerFrame(builder, frame);
-		Arrays.stream(Port.values()).forEach(port -> registerPort(builder, port));
+		Arrays.stream(Port.values()).filter(port -> block.getValidConnections().contains(port.connection)).forEach(port -> registerPort(builder, port));
 	}
+
 	private void registerBlockItem(BlockLike block)
 	{
 		registerBlockItem(block.asBlock());

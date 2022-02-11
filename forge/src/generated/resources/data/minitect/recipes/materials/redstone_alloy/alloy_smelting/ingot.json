@@ -1,0 +1,19 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/iron"
+    },
+    {
+      "tag": "forge:gems/redstone",
+      "count": 4
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:redstone_alloy_ingot",
+      "count": 2
+    }
+  ]
+}

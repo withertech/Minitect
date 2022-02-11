@@ -1,0 +1,23 @@
+{
+  "type": "minitect:shaped_metal",
+  "pattern": [
+    "$#%",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "fabric:ingots/lumium"
+    },
+    "$": {
+      "item": "minitect:hammer"
+    },
+    "%": {
+      "item": "minitect:file"
+    }
+  },
+  "result": {
+    "item": "minitect:lumium_gear",
+    "count": 2
+  }
+}

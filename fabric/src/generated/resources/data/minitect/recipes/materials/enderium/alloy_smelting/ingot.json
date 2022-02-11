@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ender_pearls",
+      "count": 4
+    },
+    {
+      "tag": "fabric:ingots/platinum"
+    },
+    {
+      "tag": "fabric:ingots/lead",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:enderium_ingot",
+      "count": 4
+    }
+  ]
+}

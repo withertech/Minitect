@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "forge:ingots/silver"
+    },
+    {
+      "tag": "forge:gems/redstone",
+      "count": 4
+    },
+    {
+      "tag": "forge:ingots/copper",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:signalum_ingot",
+      "count": 4
+    }
+  ]
+}

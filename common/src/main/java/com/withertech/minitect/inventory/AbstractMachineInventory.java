@@ -1,10 +1,27 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.inventory;
 
 import com.google.common.collect.Streams;
 import com.withertech.minitect.block.AbstractMachineBlock;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
-import com.withertech.minitect.block.MTFurnaceBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
@@ -57,7 +74,7 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 		boolean bl = false;
 		Iterator<ItemStack> var3 = Arrays.stream(INPUT_SLOTS).mapToObj(this::getItem).iterator();
 
-		while(var3.hasNext())
+		while (var3.hasNext())
 		{
 			ItemStack itemStack = var3.next();
 			if (itemStack.isEmpty() || ItemStack.isSameItemSameTags(itemStack, stack) && itemStack.getCount() < itemStack.getMaxStackSize())
@@ -75,7 +92,7 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 		boolean bl = false;
 		Iterator<ItemStack> var3 = Arrays.stream(OUTPUT_SLOTS).mapToObj(this::getItem).iterator();
 
-		while(var3.hasNext())
+		while (var3.hasNext())
 		{
 			ItemStack itemStack = var3.next();
 			if (itemStack.isEmpty() || ItemStack.isSameItemSameTags(itemStack, stack) && itemStack.getCount() < itemStack.getMaxStackSize())
@@ -92,9 +109,11 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 	{
 		ItemStack itemStack = stack.copy();
 		this.moveItemToOccupiedSlotsInOutputWithSameType(itemStack);
-		if (itemStack.isEmpty()) {
+		if (itemStack.isEmpty())
+		{
 			return ItemStack.EMPTY;
-		} else {
+		} else
+		{
 			this.moveItemToEmptySlotsInOutput(itemStack);
 			return itemStack.isEmpty() ? ItemStack.EMPTY : itemStack;
 		}
@@ -104,9 +123,11 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 	{
 		ItemStack itemStack = stack.copy();
 		this.moveItemToOccupiedSlotsInInputWithSameType(itemStack);
-		if (itemStack.isEmpty()) {
+		if (itemStack.isEmpty())
+		{
 			return ItemStack.EMPTY;
-		} else {
+		} else
+		{
 			this.moveItemToEmptySlotsInInput(itemStack);
 			return itemStack.isEmpty() ? ItemStack.EMPTY : itemStack;
 		}
@@ -114,7 +135,7 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 
 	private void moveItemToEmptySlotsInOutput(ItemStack stack)
 	{
-		for(int i : OUTPUT_SLOTS)
+		for (int i : OUTPUT_SLOTS)
 		{
 			ItemStack itemStack = this.getItem(i);
 			if (itemStack.isEmpty())
@@ -128,7 +149,7 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 
 	private void moveItemToEmptySlotsInInput(ItemStack stack)
 	{
-		for(int i : INPUT_SLOTS)
+		for (int i : INPUT_SLOTS)
 		{
 			ItemStack itemStack = this.getItem(i);
 			if (itemStack.isEmpty())
@@ -172,10 +193,12 @@ public abstract class AbstractMachineInventory extends SimpleContainer implement
 		}
 	}
 
-	private void moveItemsBetweenStacks(ItemStack itemStack, ItemStack itemStack2) {
+	private void moveItemsBetweenStacks(ItemStack itemStack, ItemStack itemStack2)
+	{
 		int i = Math.min(this.getMaxStackSize(), itemStack2.getMaxStackSize());
 		int j = Math.min(itemStack.getCount(), i - itemStack2.getCount());
-		if (j > 0) {
+		if (j > 0)
+		{
 			itemStack2.grow(j);
 			itemStack.shrink(j);
 			this.setChanged();

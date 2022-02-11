@@ -1,12 +1,28 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.block;
 
 import com.google.common.collect.Maps;
 import com.withertech.mine_flux.api.IMFStorage;
 import com.withertech.mine_flux.util.EnergyUtil;
 import com.withertech.minitect.item.MachineBlockItem;
-import com.withertech.minitect.recipe.AbstractRecipe;
 import com.withertech.minitect.tile.AbstractMachineTile;
-import com.withertech.minitect.tile.MTFurnaceTile;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -55,10 +71,6 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock implements Wo
 		directions.put(Face.UP, UP);
 	});
 
-	public abstract Set<Connection> getValidConnections();
-
-	public abstract boolean isTicker();
-
 	protected AbstractMachineBlock(Properties properties)
 	{
 		super(properties);
@@ -70,6 +82,32 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock implements Wo
 				.setValue(DOWN, Connection.NONE)
 				.setValue(UP, Connection.NONE));
 	}
+
+	protected static <T> T findNextInCollection(Collection<T> collection, T value)
+	{
+		Iterator<T> iterator = collection.iterator();
+
+		do
+		{
+			if (!iterator.hasNext())
+			{
+				return iterator.next();
+			}
+		} while (!iterator.next().equals(value));
+
+		if (iterator.hasNext())
+		{
+			return iterator.next();
+		} else
+		{
+			return collection.iterator().next();
+		}
+	}
+
+	public abstract Set<Connection> getValidConnections();
+
+	public abstract boolean isTicker();
+
 	@Override
 	public RenderShape getRenderShape(BlockState blockState)
 	{
@@ -80,7 +118,7 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock implements Wo
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext)
 	{
-		return !blockPlaceContext.getItemInHand().getOrCreateTag().contains("State")? super.getStateForPlacement(blockPlaceContext).setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite()) : NbtUtils.readBlockState(blockPlaceContext.getItemInHand().getOrCreateTag().getCompound("State")).setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
+		return !blockPlaceContext.getItemInHand().getOrCreateTag().contains("State") ? super.getStateForPlacement(blockPlaceContext).setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite()) : NbtUtils.readBlockState(blockPlaceContext.getItemInHand().getOrCreateTag().getCompound("State")).setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
 	}
 
 	@Override
@@ -121,22 +159,6 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock implements Wo
 	{
 		BlockState state = level.getBlockState(pos);
 		level.setBlockAndUpdate(pos, state.setValue(FACING_TO_PROPERTY_MAP.get(face), findNextInCollection(getValidConnections(), state.getValue(FACING_TO_PROPERTY_MAP.get(face)))));
-	}
-
-	protected static <T> T findNextInCollection(Collection<T> collection, T value) {
-		Iterator<T> iterator = collection.iterator();
-
-		do {
-			if (!iterator.hasNext()) {
-				return iterator.next();
-			}
-		} while(!iterator.next().equals(value));
-
-		if (iterator.hasNext()) {
-			return iterator.next();
-		} else {
-			return collection.iterator().next();
-		}
 	}
 
 	@Override

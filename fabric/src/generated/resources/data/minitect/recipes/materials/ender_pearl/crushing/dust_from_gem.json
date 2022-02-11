@@ -1,0 +1,14 @@
+{
+  "type": "minitect:crushing",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ender_pearls"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:ender_pearl_dust"
+    }
+  ]
+}

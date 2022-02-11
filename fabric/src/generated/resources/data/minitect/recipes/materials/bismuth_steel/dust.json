@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "fabric:dusts/iron"
-    },
-    {
-      "tag": "fabric:dusts/iron"
-    },
-    {
       "tag": "fabric:dusts/bismuth"
+    },
+    {
+      "tag": "fabric:dusts/iron"
+    },
+    {
+      "tag": "fabric:dusts/iron"
     },
     {
       "tag": "fabric:dusts/coal"

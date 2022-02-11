@@ -1,7 +1,27 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.registry;
 
+import com.withertech.minitect.client.screen.MTAlloySmelterScreen;
 import com.withertech.minitect.client.screen.MTCrusherScreen;
 import com.withertech.minitect.client.screen.MTFurnaceScreen;
+import com.withertech.minitect.container.MTAlloySmelterContainer;
 import com.withertech.minitect.container.MTCrusherContainer;
 import com.withertech.minitect.container.MTFurnaceContainer;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -12,5 +32,6 @@ public class MineScreens
 	{
 		MenuRegistry.<MTFurnaceContainer, MTFurnaceScreen>registerScreenFactory(MineContainers.FURNACE.get(), (containerMenu, inventory, component) -> new MTFurnaceScreen(containerMenu, inventory.player, component));
 		MenuRegistry.<MTCrusherContainer, MTCrusherScreen>registerScreenFactory(MineContainers.CRUSHER.get(), (containerMenu, inventory, component) -> new MTCrusherScreen(containerMenu, inventory.player, component));
+		MenuRegistry.<MTAlloySmelterContainer, MTAlloySmelterScreen>registerScreenFactory(MineContainers.ALLOY_SMELTER.get(), (containerMenu, inventory, component) -> new MTAlloySmelterScreen(containerMenu, inventory.player, component));
 	}
 }

@@ -1,27 +1,40 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.model;
 
 import com.withertech.minitect.Minitect;
 import com.withertech.minitect.block.AbstractMachineBlock;
 import com.withertech.minitect.block.Connection;
 import com.withertech.minitect.block.Face;
-import com.withertech.minitect.registry.MineBlocks;
-import com.withertech.minitect.registry.MineGems;
-import com.withertech.minitect.registry.MineMetals;
-import com.withertech.minitect.registry.MineUpgrades;
+import com.withertech.minitect.registry.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockStateDefinitionProvider;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.ModelProvider;
-import net.minecraft.data.models.blockstates.*;
+import net.minecraft.data.models.blockstates.Condition;
+import net.minecraft.data.models.blockstates.MultiPartGenerator;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Arrays;
@@ -38,6 +51,7 @@ public class MineBlockStateProviderFabric extends FabricBlockStateDefinitionProv
 	{
 		registerMachine(generator, MineBlocks.FURNACE.get(), Minitect.modLoc("block/furnace_frame"));
 		registerMachine(generator, MineBlocks.CRUSHER.get(), Minitect.modLoc("block/crusher_frame"));
+		registerMachine(generator, MineBlocks.ALLOY_SMELTER.get(), Minitect.modLoc("block/alloy_smelter_frame"));
 		for (MineMetals metal : MineMetals.values())
 		{
 			metal.getStorageBlock(true).ifPresent(generator::createTrivialCube);
@@ -78,6 +92,10 @@ public class MineBlockStateProviderFabric extends FabricBlockStateDefinitionProv
 		for (MineUpgrades upgrade : MineUpgrades.values())
 		{
 			generator.generateFlatItem(upgrade.asItem(), ModelTemplates.FLAT_ITEM);
+		}
+		for (MineCraftingTools tool : MineCraftingTools.values())
+		{
+			generator.generateFlatItem(tool.asItem(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		}
 	}
 
@@ -141,7 +159,7 @@ public class MineBlockStateProviderFabric extends FabricBlockStateDefinitionProv
 		generator.delegateItemModel(block, frame);
 		final MultiPartGenerator builder = MultiPartGenerator.multiPart(block);
 		registerFrame(builder, frame);
-		Arrays.stream(Port.values()).forEach(port -> registerPort(builder, port));
+		Arrays.stream(Port.values()).filter(port -> block.getValidConnections().contains(port.connection)).forEach(port -> registerPort(builder, port));
 		generator.blockStateOutput.accept(builder);
 	}
 

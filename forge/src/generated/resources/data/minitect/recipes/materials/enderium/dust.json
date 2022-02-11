@@ -2,28 +2,28 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
+      "tag": "forge:dusts/lead"
+    },
+    {
       "tag": "forge:dusts/platinum"
-    },
-    {
-      "tag": "forge:dusts/lead"
-    },
-    {
-      "tag": "forge:dusts/lead"
-    },
-    {
-      "tag": "forge:dusts/lead"
-    },
-    {
-      "tag": "forge:dusts/ender_pearl"
-    },
-    {
-      "tag": "forge:dusts/ender_pearl"
-    },
-    {
-      "tag": "forge:dusts/ender_pearl"
-    },
-    {
-      "tag": "forge:dusts/ender_pearl"
     }
   ],
   "result": {

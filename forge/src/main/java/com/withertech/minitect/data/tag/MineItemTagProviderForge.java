@@ -1,3 +1,21 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.tag;
 
 import com.withertech.mine_tags.tags.PlatformTags;
@@ -79,7 +97,7 @@ public class MineItemTagProviderForge extends ItemTagsProvider
 		groupMetalBuilder(PlatformTags.Items.NUGGETS, MineMetals::getNuggetTag, ResourceItemType.NUGGET);
 		groupMetalBuilder(MineTags.Items.PLATES, MineMetals::getPlateTag, ResourceItemType.PLATE);
 		groupMetalBuilder(MineTags.Items.RODS, MineMetals::getRodTag, ResourceItemType.ROD);
-		groupMetalBuilder(MineTags.Items.GEAR, MineMetals::getGearTag, ResourceItemType.GEAR);
+		groupMetalBuilder(MineTags.Items.GEARS, MineMetals::getGearTag, ResourceItemType.GEAR);
 
 		groupGemBuilder(PlatformTags.Items.GEMS, MineGems::getGemTag, ResourceItemType.GEM);
 		groupGemBuilder(PlatformTags.Items.DUSTS, MineGems::getDustTag, ResourceItemType.DUST);

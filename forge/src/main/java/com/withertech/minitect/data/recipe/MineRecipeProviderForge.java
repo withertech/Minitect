@@ -1,13 +1,32 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.recipe;
 
-import com.withertech.mine_tags.tags.PlatformTags;
 import com.withertech.minitect.Minitect;
+import com.withertech.minitect.recipe.AlloySmeltingRecipeBuilder;
 import com.withertech.minitect.recipe.CrushingRecipeBuilder;
 import com.withertech.minitect.recipe.ExtendedShapedRecipeBuilder;
 import com.withertech.minitect.recipe.ExtendedShapelessRecipeBuilder;
+import com.withertech.minitect.registry.MineCraftingTools;
 import com.withertech.minitect.registry.MineGems;
 import com.withertech.minitect.registry.MineMetals;
-import com.withertech.minitect.registry.MineOres;
+import com.withertech.minitect.registry.MineRecipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -40,15 +59,19 @@ public class MineRecipeProviderForge extends RecipeProvider
 	{
 		for (MineMetals metal : MineMetals.values())
 		{
-			metal.getAlloy().ifPresent(alloy ->
+			if (metal.getAlloy().isPresent() && metal.getDust().isPresent())
 			{
-				metal.getDust().ifPresent(dust ->
-				{
-					ExtendedShapelessRecipeBuilder builder = ExtendedShapelessRecipeBuilder.vanillaBuilder(dust, alloy.getResultCount());
-					alloy.getDustIngredients().forEach(builder::requires);
-					builder.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/dust"));
-				});
-			});
+				ExtendedShapelessRecipeBuilder builder = ExtendedShapelessRecipeBuilder.vanillaBuilder(metal.getDust().get(), metal.getAlloy().get().getResultCount());
+				metal.getAlloy().get().getDustIngredients().forEach(builder::requires);
+				builder.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/dust"));
+			}
+			if (metal.getAlloy().isPresent() && metal.getIngot().isPresent())
+			{
+				AlloySmeltingRecipeBuilder.alloyIngot(metal, 400)
+						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/alloy_smelting/ingot"));
+				AlloySmeltingRecipeBuilder.alloyDust(metal, 400)
+						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/alloy_smelting/ingot_from_dust"));
+			}
 		}
 	}
 
@@ -85,6 +108,35 @@ public class MineRecipeProviderForge extends RecipeProvider
 				ExtendedShapelessRecipeBuilder.vanillaBuilder(metal.getIngot().get(), 9)
 						.requires(metal.getStorageBlockItemTag().get())
 						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/ingot_from_block"));
+			}
+			if (metal.getPlate(true).isPresent() && metal.getIngotTag().isPresent())
+			{
+				ExtendedShapedRecipeBuilder.builder(MineRecipes.Serializers.SHAPED_METAL.get(), metal.getPlate(true).get())
+						.pattern("T")
+						.pattern("#")
+						.define('T', MineCraftingTools.HAMMER)
+						.define('#', metal.getIngotTag().get())
+						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/plate"));
+			}
+			if (metal.getRod(true).isPresent() && metal.getIngotTag().isPresent())
+			{
+				ExtendedShapedRecipeBuilder.builder(MineRecipes.Serializers.SHAPED_METAL.get(), metal.getRod(true).get())
+						.pattern("T")
+						.pattern("#")
+						.define('T', MineCraftingTools.FILE)
+						.define('#', metal.getIngotTag().get())
+						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/rod"));
+			}
+			if (metal.getGear().isPresent() && metal.getIngotTag().isPresent())
+			{
+				ExtendedShapedRecipeBuilder.builder(MineRecipes.Serializers.SHAPED_METAL.get(), metal.getGear().get(), 2)
+						.pattern("$#%")
+						.pattern("# #")
+						.pattern(" # ")
+						.define('#', metal.getIngotTag().get())
+						.define('$', MineCraftingTools.HAMMER)
+						.define('%', MineCraftingTools.FILE)
+						.save(consumer, Minitect.modLoc("materials/" + metal.getName() + "/gear"));
 			}
 		}
 	}

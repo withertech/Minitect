@@ -1,9 +1,26 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.lang;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
 import net.minecraft.world.effect.MobEffect;
@@ -32,7 +49,8 @@ public abstract class FabricLanguageProvider implements DataProvider
 	private final String modid;
 	private final String locale;
 
-	public FabricLanguageProvider(FabricDataGenerator gen, String locale) {
+	public FabricLanguageProvider(FabricDataGenerator gen, String locale)
+	{
 		this.gen = gen;
 		this.modid = gen.getModId();
 		this.locale = locale;
@@ -49,18 +67,22 @@ public abstract class FabricLanguageProvider implements DataProvider
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "Languages: " + locale;
 	}
 
-	private void save(HashCache cache, Object object, Path target) throws IOException {
+	private void save(HashCache cache, Object object, Path target) throws IOException
+	{
 		String data = GSON.toJson(object);
 		data = JavaUnicodeEscaper.outsideOf(0, 0x7f).translate(data); // Escape unicode after the fact so that it's not double escaped by GSON
 		String hash = DataProvider.SHA1.hashUnencodedChars(data).toString();
-		if (!Objects.equals(cache.getHash(target), hash) || !Files.exists(target)) {
+		if (!Objects.equals(cache.getHash(target), hash) || !Files.exists(target))
+		{
 			Files.createDirectories(target.getParent());
 
-			try (BufferedWriter bufferedwriter = Files.newBufferedWriter(target)) {
+			try (BufferedWriter bufferedwriter = Files.newBufferedWriter(target))
+			{
 				bufferedwriter.write(data);
 			}
 		}
@@ -68,35 +90,43 @@ public abstract class FabricLanguageProvider implements DataProvider
 		cache.putNew(target, hash);
 	}
 
-	public void addBlock(Supplier<? extends Block> key, String name) {
+	public void addBlock(Supplier<? extends Block> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(Block key, String name) {
+	public void add(Block key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
-	public void addItem(Supplier<? extends Item> key, String name) {
+	public void addItem(Supplier<? extends Item> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(Item key, String name) {
+	public void add(Item key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
-	public void addItemStack(Supplier<ItemStack> key, String name) {
+	public void addItemStack(Supplier<ItemStack> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(ItemStack key, String name) {
+	public void add(ItemStack key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
-	public void addEnchantment(Supplier<? extends Enchantment> key, String name) {
+	public void addEnchantment(Supplier<? extends Enchantment> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(Enchantment key, String name) {
+	public void add(Enchantment key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
@@ -110,23 +140,28 @@ public abstract class FabricLanguageProvider implements DataProvider
     }
     */
 
-	public void addEffect(Supplier<? extends MobEffect> key, String name) {
+	public void addEffect(Supplier<? extends MobEffect> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(MobEffect key, String name) {
+	public void add(MobEffect key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
-	public void addEntityType(Supplier<? extends EntityType<?>> key, String name) {
+	public void addEntityType(Supplier<? extends EntityType<?>> key, String name)
+	{
 		add(key.get(), name);
 	}
 
-	public void add(EntityType<?> key, String name) {
+	public void add(EntityType<?> key, String name)
+	{
 		add(key.getDescriptionId(), name);
 	}
 
-	public void add(String key, String value) {
+	public void add(String key, String value)
+	{
 		if (data.put(key, value) != null)
 			throw new IllegalStateException("Duplicate translation key " + key);
 	}

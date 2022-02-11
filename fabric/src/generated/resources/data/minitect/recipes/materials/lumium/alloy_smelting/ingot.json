@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:gems/glowstone",
+      "count": 4
+    },
+    {
+      "tag": "fabric:ingots/silver"
+    },
+    {
+      "tag": "fabric:ingots/tin",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:lumium_ingot",
+      "count": 4
+    }
+  ]
+}

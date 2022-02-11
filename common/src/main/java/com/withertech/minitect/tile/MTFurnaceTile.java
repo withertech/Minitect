@@ -1,3 +1,21 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.tile;
 
 import com.withertech.mine_flux.api.IMFStorage;
@@ -64,7 +82,8 @@ public abstract class MTFurnaceTile extends AbstractMachineTile<CookingRecipeWra
 	@Override
 	public ContainerData getPropertyDelegate()
 	{
-		return new ContainerData() {
+		return new ContainerData()
+		{
 			@Override
 			public int get(int index)
 			{
@@ -155,27 +174,27 @@ public abstract class MTFurnaceTile extends AbstractMachineTile<CookingRecipeWra
 	}
 
 	@Override
-	protected void setMaxProgress(int newTime)
-	{
-		this.maxProgress = newTime;
-	}
-
-	@Override
 	protected int getMaxProgress()
 	{
 		return this.maxProgress;
 	}
 
 	@Override
-	protected void setProgress(int newTime)
+	protected void setMaxProgress(int newTime)
 	{
-		this.progress = newTime;
+		this.maxProgress = newTime;
 	}
 
 	@Override
 	protected int getProgress()
 	{
 		return this.progress;
+	}
+
+	@Override
+	protected void setProgress(int newTime)
+	{
+		this.progress = newTime;
 	}
 
 	public class FurnaceInventory extends AbstractMachineInventory

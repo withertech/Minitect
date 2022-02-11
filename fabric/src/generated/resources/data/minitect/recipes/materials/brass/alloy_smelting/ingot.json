@@ -1,0 +1,19 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:ingots/zinc"
+    },
+    {
+      "tag": "fabric:ingots/copper",
+      "count": 3
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:brass_ingot",
+      "count": 4
+    }
+  ]
+}

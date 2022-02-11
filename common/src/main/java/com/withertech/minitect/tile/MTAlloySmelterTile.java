@@ -1,0 +1,214 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package com.withertech.minitect.tile;
+
+import com.withertech.mine_flux.api.IMFStorage;
+import com.withertech.mine_flux.util.EnergyUtil;
+import com.withertech.minitect.block.Connection;
+import com.withertech.minitect.container.MTAlloySmelterContainer;
+import com.withertech.minitect.inventory.AbstractMachineInventory;
+import com.withertech.minitect.recipe.AlloySmeltingRecipe;
+import com.withertech.minitect.registry.MineRecipes;
+import com.withertech.minitect.registry.MineTiles;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.Container;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+
+public abstract class MTAlloySmelterTile extends AbstractMachineTile<AlloySmeltingRecipe, Recipe<Container>>
+{
+	public static final int ENERGY_SIZE = 1_000_000;
+	public static final int ENERGY_TRANSFER = 500;
+	public static final int INV_SIZE = 4;
+	public static final int DATA_SIZE = 4;
+
+	protected final AlloySmelterInventory inventory = new AlloySmelterInventory();
+	protected final IMFStorage energy = EnergyUtil.create(ENERGY_SIZE, ENERGY_TRANSFER);
+	protected int maxProgress = 100;
+	protected int progress = 0;
+
+	public MTAlloySmelterTile(BlockPos blockPos, BlockState blockState)
+	{
+		super(MineTiles.ALLOY_SMELTER.get(), blockPos, blockState);
+	}
+
+	@Override
+	protected void tick(Level level, BlockPos blockPos, BlockState state, AbstractMachineInventory container)
+	{
+		updateCrafting(level, blockPos, state, container);
+	}
+
+	@Override
+	protected Optional<IMFStorage> getStorageFor(@Nullable Direction side)
+	{
+		if (side == null) return Optional.of(energy);
+		final Connection connection = getConnectionFromDirection(side);
+		if (connection.TYPE.equals(Connection.Type.ENERGY) && connection.MODE != Connection.Mode.NONE)
+		{
+			return Optional.of(energy);
+		}
+		return Optional.empty();
+	}
+
+	@Override
+	protected RecipeType<AlloySmeltingRecipe> getRecipeType()
+	{
+		return MineRecipes.Types.ALLOY_SMELTING;
+	}
+
+	@Override
+	protected int getMaxProgress()
+	{
+		return this.maxProgress;
+	}
+
+	@Override
+	protected void setMaxProgress(int newTime)
+	{
+		this.maxProgress = newTime;
+	}
+
+	@Override
+	protected int getProgress()
+	{
+		return this.progress;
+	}
+
+	@Override
+	protected void setProgress(int newTime)
+	{
+		this.progress = newTime;
+	}
+
+	@Override
+	public ContainerData getPropertyDelegate()
+	{
+		return new ContainerData()
+		{
+			@Override
+			public int get(int index)
+			{
+				return switch (index)
+						{
+							case 0 -> energy.getEnergyStored();
+							case 1 -> energy.getMaxEnergyStored();
+							case 2 -> progress;
+							case 3 -> maxProgress;
+							default -> throw new IllegalStateException("Unexpected value: " + index);
+						};
+			}
+
+			@Override
+			public void set(int index, int value)
+			{
+
+			}
+
+			@Override
+			public int getCount()
+			{
+				return DATA_SIZE;
+			}
+		};
+	}
+
+	@Override
+	public void load(CompoundTag compoundTag)
+	{
+		if (!compoundTag.contains("Energy")) compoundTag.putInt("Energy", 0);
+		if (!compoundTag.contains("Progress")) compoundTag.putInt("Progress", 0);
+		if (!compoundTag.contains("MaxProgress")) compoundTag.putInt("MaxProgress", 100);
+		if (!compoundTag.contains("Inventory")) compoundTag.put("Inventory", inventory.createTag());
+		progress = compoundTag.getInt("Progress");
+		maxProgress = compoundTag.getInt("MaxProgress");
+		energy.deserializeNBT(compoundTag.get("Energy"));
+		inventory.fromTag(compoundTag.getList("Inventory", Tag.TAG_COMPOUND));
+		super.load(compoundTag);
+	}
+
+	@Override
+	protected void saveAdditional(CompoundTag compoundTag)
+	{
+		compoundTag.putInt("Progress", progress);
+		compoundTag.putInt("MaxProgress", maxProgress);
+		compoundTag.put("Energy", energy.serializeNBT());
+		compoundTag.put("Inventory", inventory.createTag());
+		super.saveAdditional(compoundTag);
+	}
+
+	@Override
+	public Component getDisplayName()
+	{
+		return new TextComponent("Alloy Smelter");
+	}
+
+	@Override
+	public WorldlyContainer getContainer(BlockState state, LevelAccessor level, BlockPos pos)
+	{
+		return inventory;
+	}
+
+	@Nullable
+	@Override
+	public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player)
+	{
+		return new MTAlloySmelterContainer(i, inventory, ContainerLevelAccess.create(level, worldPosition), getDisplayName());
+	}
+
+	public class AlloySmelterInventory extends AbstractMachineInventory
+	{
+		public AlloySmelterInventory()
+		{
+			super(INV_SIZE, new int[]{0, 1, 2}, new int[]{3});
+		}
+
+		@Override
+		public void setItem(int index, ItemStack stack)
+		{
+			if (getLevel() != null)
+				updateMaxProgress(this);
+			MTAlloySmelterTile.this.setChanged();
+			super.setItem(index, stack);
+		}
+
+		@Override
+		protected BlockState getBlockState()
+		{
+			return MTAlloySmelterTile.this.getBlockState();
+		}
+	}
+}

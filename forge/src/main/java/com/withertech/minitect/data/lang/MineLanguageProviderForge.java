@@ -1,3 +1,21 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.data.lang;
 
 import com.withertech.minitect.Minitect;
@@ -14,6 +32,31 @@ public class MineLanguageProviderForge extends LanguageProvider
 	public MineLanguageProviderForge(DataGenerator gen)
 	{
 		super(gen, Minitect.MOD_ID, "en_us");
+	}
+
+	private static String metal(MineMetals metal, String suffix)
+	{
+		return metal(metal, "", suffix);
+	}
+
+	private static String metal(MineMetals metal, String prefix, String suffix)
+	{
+		return (!prefix.isEmpty() ? prefix + " " : "") + WordUtils.capitalize(metal.getName().replaceAll("_", " ")) + " " + suffix;
+	}
+
+	private static String gem(MineGems metal, String suffix)
+	{
+		return gem(metal, "", suffix);
+	}
+
+	private static String gem(MineGems metal, String prefix, String suffix)
+	{
+		return (!prefix.isEmpty() ? prefix + " " : "") + WordUtils.capitalize(metal.getName().replaceAll("_", " ")) + " " + suffix;
+	}
+
+	private static String upgrade(MineUpgrades upgrade)
+	{
+		return WordUtils.capitalize(upgrade.name().toLowerCase(Locale.ROOT).replaceAll("_", " ")) + " Upgrade";
 	}
 
 	@Override
@@ -47,30 +90,5 @@ public class MineLanguageProviderForge extends LanguageProvider
 		}
 		add(((TranslatableComponent) MineTabs.MACHINES.getDisplayName()).getKey(), "Minitect: Machines");
 		add(((TranslatableComponent) MineTabs.MATERIALS.getDisplayName()).getKey(), "Minitect: Materials");
-	}
-
-	private static String metal(MineMetals metal, String suffix)
-	{
-		return metal(metal, "", suffix);
-	}
-
-	private static String metal(MineMetals metal, String prefix, String suffix)
-	{
-		return (!prefix.isEmpty() ? prefix + " " : "") + WordUtils.capitalize(metal.getName().replaceAll("_", " ")) + " " + suffix;
-	}
-
-	private static String gem(MineGems metal, String suffix)
-	{
-		return gem(metal, "", suffix);
-	}
-
-	private static String gem(MineGems metal, String prefix, String suffix)
-	{
-		return (!prefix.isEmpty() ? prefix + " " : "") + WordUtils.capitalize(metal.getName().replaceAll("_", " ")) + " " + suffix;
-	}
-
-	private static String upgrade(MineUpgrades upgrade)
-	{
-		return WordUtils.capitalize(upgrade.name().toLowerCase(Locale.ROOT).replaceAll("_", " ")) + " Upgrade";
 	}
 }

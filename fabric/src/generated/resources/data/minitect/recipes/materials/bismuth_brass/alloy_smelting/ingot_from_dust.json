@@ -1,0 +1,22 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/bismuth"
+    },
+    {
+      "tag": "fabric:dusts/copper",
+      "count": 2
+    },
+    {
+      "tag": "fabric:dusts/zinc"
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:bismuth_brass_ingot",
+      "count": 4
+    }
+  ]
+}

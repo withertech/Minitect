@@ -1,0 +1,23 @@
+{
+  "type": "minitect:alloy_smelting",
+  "process_time": 400,
+  "ingredients": [
+    {
+      "tag": "fabric:dusts/coal",
+      "count": 3
+    },
+    {
+      "tag": "fabric:dusts/aluminum"
+    },
+    {
+      "tag": "fabric:dusts/iron",
+      "count": 2
+    }
+  ],
+  "results": [
+    {
+      "item": "minitect:aluminum_steel_ingot",
+      "count": 4
+    }
+  ]
+}

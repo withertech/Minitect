@@ -1,3 +1,21 @@
+/*
+ * Minitect
+ * Copyright (C) 2022 WitherTech
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.withertech.minitect.tile;
 
 import com.withertech.mine_flux.api.IMFStorage;
@@ -29,7 +47,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.Optional;
 
 public abstract class MTCrusherTile extends AbstractMachineTile<CrushingRecipe, Recipe<Container>>
 {
@@ -64,7 +82,8 @@ public abstract class MTCrusherTile extends AbstractMachineTile<CrushingRecipe, 
 	@Override
 	public ContainerData getPropertyDelegate()
 	{
-		return new ContainerData() {
+		return new ContainerData()
+		{
 			@Override
 			public int get(int index)
 			{
@@ -148,21 +167,15 @@ public abstract class MTCrusherTile extends AbstractMachineTile<CrushingRecipe, 
 	}
 
 	@Override
-	protected void setMaxProgress(int newTime)
-	{
-		this.maxProgress = newTime;
-	}
-
-	@Override
 	protected int getMaxProgress()
 	{
 		return this.maxProgress;
 	}
 
 	@Override
-	protected void setProgress(int newTime)
+	protected void setMaxProgress(int newTime)
 	{
-		this.progress = newTime;
+		this.maxProgress = newTime;
 	}
 
 	@Override
@@ -171,11 +184,17 @@ public abstract class MTCrusherTile extends AbstractMachineTile<CrushingRecipe, 
 		return this.progress;
 	}
 
+	@Override
+	protected void setProgress(int newTime)
+	{
+		this.progress = newTime;
+	}
+
 	public class CrusherInventory extends AbstractMachineInventory
 	{
 		public CrusherInventory()
 		{
-			super(INV_SIZE, new int[] {0}, new int[] {1, 2, 3});
+			super(INV_SIZE, new int[]{0}, new int[]{1, 2, 3});
 		}
 
 		@Override
